@@ -4,6 +4,7 @@ all:
 	@cd ar1335;  make || exit $$?;
 	@cd camera-proxy-driver;  make || exit $$?;
 	@cd imx219;  make || exit $$?;
+	@cd ov5695;  make || exit $$?;
 
 clean:
 	@cd ov2775;   make clean;
@@ -11,6 +12,7 @@ clean:
 	@cd ar1335;   make clean;
 	@cd camera-proxy-driver;   make clean;
 	@cd imx219;   make clean;
+	@cd ov5695;   make clean;
 
 modules_install:
 	@cd ov2775;   make modules_install;
@@ -18,4 +20,5 @@ modules_install:
 	@cd ar1335;   make modules_install;
 	@cd camera-proxy-driver;   make modules_install;
 	@cd imx219;   make modules_install;
+	@cd ov5695;   make modules_install;
 

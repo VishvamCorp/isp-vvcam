@@ -542,7 +542,9 @@ int isp_hw_probe(struct platform_device *pdev)
 	int irq;
 	int rc;
 	int i;
-	pr_info("enter %s\n", __func__);
+
+	dev_info(dev, "Probing vvcam isp driver\n");
+
 	isp_dev = kzalloc(sizeof(struct isp_device), GFP_KERNEL);
 	if (!isp_dev)
 		return -ENOMEM;
@@ -677,7 +679,8 @@ int isp_hw_probe(struct platform_device *pdev)
 
 	pm_runtime_enable(&pdev->dev);
 
-	pr_info("vvcam isp driver registered\n");
+	dev_info(dev, "vvcam isp driver registered\n");
+	dev_info(dev, "Probe: Success\n");
 	return 0;
 end:
 	pm_runtime_disable(&pdev->dev);
@@ -698,7 +701,8 @@ int isp_hw_remove(struct platform_device *pdev)
 	struct isp_device *isp = platform_get_drvdata(pdev);
 	int rc;
 
-	pr_info("enter %s\n", __func__);
+	dev_info(&pdev->dev, "Removing vvcam isp driver\n");
+
 	if (!isp)
 		return -1;
 
@@ -717,7 +721,8 @@ int isp_hw_remove(struct platform_device *pdev)
 	proc_remove(isp->pde);
 	pm_runtime_disable(&pdev->dev);
 	kfree(isp);
-	pr_info("vvcam isp driver removed\n");
+
+	dev_info(&pdev->dev, "Remove: Success\n");
 	return 0;
 }
 

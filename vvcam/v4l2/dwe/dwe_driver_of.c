@@ -341,7 +341,7 @@ int dwe_hw_probe(struct platform_device *pdev)
 	int rc, i, index;
 	int dev_id;
 
-	pr_info("enter %s\n", __func__);
+	dev_info(dev, "Probing vvcam dwe driver\n");
 
 	mem_res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
 	if (!mem_res) {
@@ -448,7 +448,7 @@ int dwe_hw_probe(struct platform_device *pdev)
 		g_dwe_subdev[dev_id] = &dwe_dev->sd;
 	}
 	pm_runtime_enable(&pdev->dev);
-	pr_info("vvcam dewarp driver probed\n");
+	dev_info(dev, "Probe: Success\n");
 	return 0;
 
 dewarp_core_deinit:
@@ -468,6 +468,9 @@ dewarp_entity_pads_deinit:
 	}
 dewarp_destory_fake_pdev:
 	dwe_fake_pdev_destory();
+
+	dev_err(dev, "Probe: Error %d\n", rc);
+
 	return rc;
 }
 

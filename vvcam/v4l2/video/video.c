@@ -1954,6 +1954,9 @@ static int viv_video_probe(struct platform_device *pdev)
 
 	int j;
 	struct v4l2_async_connection *asd;
+
+	dev_info(&pdev->dev, "Probing viv video driver\n");
+
 	strscpy(mdev.model, "viv_media", sizeof(mdev.model));
 	mdev.ops = &viv_mdev_ops;
 	mdev.dev = &pdev->dev;
@@ -2107,6 +2110,13 @@ register_fail:
 	if (!rc)
 		rc = media_device_register(&mdev);
 probe_end:
+	if (rc)	{
+		dev_err(&pdev->dev, "failed to register media device\n");
+		dev_err(&pdev->dev, "Probe: Error %d\n", rc);
+	} else {
+		dev_info(&pdev->dev, "Probe: Success\n");
+	}
+
 	return rc;
 }
 

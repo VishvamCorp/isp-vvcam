@@ -3,5 +3,5 @@ Outgoing License:            GPL-2.0
 License File:                vvcam/LICENSE
 Type of Content:             ISP Kernel Module source
 Description and comments:    Kernel Loadable Module for ISP (Graphics)
-Release Location:            https://source.codeaurora.org/external/imx/isp-vvcam
+Release Location:            https://github.com/boundarydevices/isp-vvcam/tree/cartzy-lf-6.6.y
 Origin:                      VeriSilicon Holdings Co., Ltd. (GPL-2.0)
